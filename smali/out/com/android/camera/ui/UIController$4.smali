@@ -1,0 +1,116 @@
+.class Lcom/android/camera/ui/UIController$4;
+.super Ljava/lang/Object;
+.source "UIController.java"
+
+# interfaces
+.implements Landroid/support/v4/view/OnApplyWindowInsetsListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/camera/ui/UIController;->onCreate()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lcom/android/camera/ui/UIController;
+
+
+# direct methods
+.method constructor <init>(Lcom/android/camera/ui/UIController;)V
+    .registers 2
+
+    iput-object p1, p0, Lcom/android/camera/ui/UIController$4;->this$0:Lcom/android/camera/ui/UIController;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onApplyWindowInsets(Landroid/view/View;Landroid/support/v4/view/WindowInsetsCompat;)Landroid/support/v4/view/WindowInsetsCompat;
+    .registers 10
+
+    const/4 v4, 0x0
+
+    invoke-virtual {p2}, Landroid/support/v4/view/WindowInsetsCompat;->getSystemWindowInsetBottom()I
+
+    move-result v0
+
+    iget-object v3, p0, Lcom/android/camera/ui/UIController$4;->this$0:Lcom/android/camera/ui/UIController;
+
+    invoke-virtual {v3}, Lcom/android/camera/ui/UIController;->getBottomControlLowerGroup()Landroid/widget/RelativeLayout;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/widget/RelativeLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/widget/RelativeLayout$LayoutParams;
+
+    iput v0, v2, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
+
+    invoke-virtual {v1}, Landroid/widget/RelativeLayout;->requestLayout()V
+
+    invoke-static {}, Lcom/android/camera/ui/V6ModulePicker;->isPanoramaModule()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_39
+
+    iget-object v3, p0, Lcom/android/camera/ui/UIController$4;->this$0:Lcom/android/camera/ui/UIController;
+
+    invoke-virtual {v3}, Lcom/android/camera/ui/UIController;->getModeExitView()Lcom/android/camera/ui/V6ModeExitView;
+
+    move-result-object v5
+
+    iget-object v3, p0, Lcom/android/camera/ui/UIController$4;->this$0:Lcom/android/camera/ui/UIController;
+
+    iget-object v3, v3, Lcom/android/camera/ui/UIController;->mActivity:Lcom/android/camera/Camera;
+
+    invoke-virtual {v3}, Lcom/android/camera/Camera;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v6, 0x7f080004
+
+    invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v6
+
+    if-lez v0, :cond_3e
+
+    move v3, v4
+
+    :goto_34
+    sub-int v3, v6, v3
+
+    invoke-virtual {v5, v4, v3}, Lcom/android/camera/ui/V6ModeExitView;->setLayoutParameters(II)V
+
+    :cond_39
+    invoke-static {p1, p2}, Landroid/support/v4/view/ViewCompat;->onApplyWindowInsets(Landroid/view/View;Landroid/support/v4/view/WindowInsetsCompat;)Landroid/support/v4/view/WindowInsetsCompat;
+
+    move-result-object v3
+
+    return-object v3
+
+    :cond_3e
+    iget-object v3, p0, Lcom/android/camera/ui/UIController$4;->this$0:Lcom/android/camera/ui/UIController;
+
+    iget-object v3, v3, Lcom/android/camera/ui/UIController;->mActivity:Lcom/android/camera/Camera;
+
+    invoke-static {v3}, Lcom/android/camera/Util;->getNavigationBarHeight(Landroid/content/Context;)I
+
+    move-result v3
+
+    div-int/lit8 v3, v3, 0x2
+
+    goto :goto_34
+.end method
